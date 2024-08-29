@@ -95,13 +95,17 @@ namespace comoencasa_Escritorio
             rec=new Recipe();
             DetailRecipeFrm frm = new DetailRecipeFrm(rec);
             frm.ShowDialog();
-            if (!string.IsNullOrWhiteSpace(rec.name))
+            if (!string.IsNullOrEmpty(rec.name))
             {
                 await Functions.CreateRecipe(rec);
                 this.refreshData();
             }
-            
-            
+            else
+            {
+                MessageBox.Show("No se ha podido guardar la receta porque es necesario especificar nombre");
+            }
+
+
         }
 
         private async void btnUpdateRecipe_Click(object sender, EventArgs e)
@@ -163,10 +167,14 @@ namespace comoencasa_Escritorio
             ing = new Ingredient();
             DetailIngredientFrm frm = new DetailIngredientFrm(ing);
             frm.ShowDialog();
-            if (!string.IsNullOrWhiteSpace(ing.name))
+            if (!string.IsNullOrEmpty(ing.name) && !string.IsNullOrEmpty(ing.type))
             {
                 await Functions.CreateIngredient(ing);
                 this.refreshData();
+            }
+            else
+            {
+                MessageBox.Show("No se ha podido guardar el ingrediente porque es necesario especificar nombre y tipo");
             }
             
         }

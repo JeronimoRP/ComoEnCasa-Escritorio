@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -30,8 +31,12 @@ namespace comoencasa_Escritorio
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            ingredient.name = txtName.Text;
-            ingredient.type = txtType.Text;
+            if (!string.IsNullOrEmpty(txtName.Text) && !string.IsNullOrEmpty(txtType.Name))
+            {
+                ingredient.name = txtName.Text;
+                ingredient.type = txtType.Text;
+            }
+
             ingredient.fromMonth = cmbFrom.SelectedIndex+1;
             ingredient.toMonth = cmbTo.SelectedIndex+1;
             this.Close();

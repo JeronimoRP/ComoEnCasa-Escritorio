@@ -40,6 +40,11 @@ namespace comoencasa_Escritorio
                     MessageBox.Show($"Failed to load image: {ex.Message}");
                 }
             }
+            else
+            {
+                MessageBox.Show("La receta no tiene imagen asociada.");
+                this.Close();
+            }
         }
 
         private async Task<Image> GetCachedImage(string url)

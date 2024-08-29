@@ -38,7 +38,10 @@ namespace comoencasa_Escritorio
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            this.rec.name = txtName.Text;
+            if (!string.IsNullOrEmpty(txtName.Text))
+            {
+                this.rec.name = txtName.Text;
+            }
             this.rec.description = txtDesc.Text;
             this.rec.photo = txtUrl.Text;
             this.rec.ingredientsList = this.recipeIngredients;
@@ -53,6 +56,10 @@ namespace comoencasa_Escritorio
             {
                 recipeIngredients = frm.SelectedRecipeIngredients;
                 LoadIngredientData();
+            }
+            else
+            {
+                MessageBox.Show("No se ha podido guardar la lista de ingredientes");
             }
         }
         private void LoadIngredientData()

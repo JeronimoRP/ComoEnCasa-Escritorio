@@ -20,7 +20,6 @@ namespace comoencasa_Escritorio
             InitializeComponent();
             this.Load += AddIngredientsFrm_Load;
 
-            // Enable multi-select for DataGridView
             dgvIngredients.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvIngredients.MultiSelect = true;
 
@@ -55,7 +54,11 @@ namespace comoencasa_Escritorio
                     SelectedRecipeIngredients.Add(recipeIngredient);
                 }
             }
-            this.DialogResult = DialogResult.OK;
+            if (SelectedRecipeIngredients.Count != 0)
+            {
+                this.DialogResult = DialogResult.OK;
+            }
+            
             this.Close();
         }
 
